@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 1,
+  "cards": [
+    {
+      "id": "goldman-apple-card",
+      "name": "Apple Card",
+      "bank": "Goldman Sachs",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "goldman-apple-card.png",
+      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "rewards": [
+        { "category": "everything", "rate": 2.0, "unit": "percentCashBack", "notes": "When paying with Apple Pay", "portalOnly": false, "rotating": false, "cap": null },
+        { "category": "onlineShopping", "rate": 3.0, "unit": "percentCashBack", "notes": "Apple, Nike, Uber, Walgreens and select partners", "portalOnly": false, "rotating": false, "cap": null }
+      ],
+      "rewardsSummary": [
+        "3% at Apple and select partners",
+        "2% via Apple Pay",
+        "1% everywhere else"
+      ],
+      "updatedAt": "2026-07-01"
+    },
+    {
+      "id": "chase-freedom-flex",
+      "name": "Freedom Flex",
+      "bank": "Chase",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "chase-freedom-flex.png",
+      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "rewards": [
+        { "category": "dining", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
+        { "category": "drugstores", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
+        { "category": "travel", "rate": 5.0, "unit": "percentCashBack", "notes": "Booked through Chase Travel", "portalOnly": true, "rotating": false, "cap": null },
+        { "category": "grocery", "rate": 5.0, "unit": "percentCashBack", "notes": "Q3 2026 rotating category, activation required", "portalOnly": false, "rotating": true, "cap": { "amount": 1500, "period": "quarter" } }
+      ],
+      "rewardsSummary": [
+        "5% rotating quarterly categories (activation required)",
+        "5% travel through Chase Travel",
+        "3% dining and drugstores"
+      ],
+      "updatedAt": "2026-07-01"
+    },
+    {
+      "id": "amex-blue-cash-preferred",
+      "name": "Blue Cash Preferred",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "amex-blue-cash-preferred.png",
+      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "rewards": [
+        { "category": "grocery", "rate": 6.0, "unit": "percentCashBack", "notes": "U.S. supermarkets", "portalOnly": false, "rotating": false, "cap": { "amount": 6000, "period": "year" } },
+        { "category": "streaming", "rate": 6.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
+        { "category": "gas", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
+        { "category": "transit", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null }
+      ],
+      "rewardsSummary": [
+        "6% U.S. supermarkets (up to $6,000/yr)",
+        "6% select streaming",
+        "3% gas and transit"
+      ],
+      "updatedAt": "2026-07-01"
+    },
+    {
+      "id": "capitalone-quicksilver",
+      "name": "Quicksilver",
+      "bank": "Capital One",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-quicksilver.png",
+      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "rewards": [
+        { "category": "everything", "rate": 1.5, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null }
+      ],
+      "rewardsSummary": [
+        "1.5% everywhere"
+      ],
+      "updatedAt": "2026-07-01"
+    }
+  ]
+}
