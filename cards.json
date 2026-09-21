@@ -1,6 +1,25 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": 1,
+  "catalogVersion": 2,
+  "updatedAt": "2026-09-20T00:00:00-04:00",
+  "networkMap": {
+    "1": "American Express",
+    "2": "Mastercard",
+    "3": "Visa",
+    "4": "Discover"
+  },
+  "valuationPolicy": {
+    "description": "estimatedCashBackRate is a catalog estimate used only for cross-card comparison. Native issuer reward rates remain authoritative.",
+    "formula": "native rate × estimatedUnitValueMinorCurrency = estimated percent return",
+    "cashBack": "Issuer-stated cash-back rates are treated as exact for the earn calculation.",
+    "pointsAndMiles": "Program values are conservative cash/redemption baselines where fixed redemption exists, otherwise clearly labeled catalog estimates.",
+    "notFinancialAdvice": true
+  },
+  "normalization": {
+    "categories": "Normalized category identifiers are used across issuers; issuer-specific restrictions remain in notes.",
+    "benefits": "Benefits contain selected recurring/high-value benefits and are not guaranteed to be exhaustive.",
+    "promotions": "Welcome offers and short-lived acquisition promos are generally excluded from rewards unless represented in announcement/benefit notes."
+  },
   "cards": [
     {
       "id": "goldman-apple-card",
@@ -9,19 +28,60 @@
       "network": 2,
       "isPublished": true,
       "annualFee": 0,
-      "announcement": null,
+      "announcement": "Apple announced Chase will become the new Apple Card issuer; transition is expected over approximately 24 months from January 2026.",
       "imageFile": "goldman-apple-card.png",
-      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "baseRate": {
+        "rate": 1.0,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.0
+      },
       "rewards": [
-        { "category": "everything", "rate": 2.0, "unit": "percentCashBack", "notes": "When paying with Apple Pay", "portalOnly": false, "rotating": false, "cap": null },
-        { "category": "onlineShopping", "rate": 3.0, "unit": "percentCashBack", "notes": "Apple, Nike, Uber, Walgreens and select partners", "portalOnly": false, "rotating": false, "cap": null }
+        {
+          "category": "everything",
+          "rate": 2.0,
+          "unit": "percentCashBack",
+          "notes": "When paying with Apple Pay",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "selectMerchants",
+          "rate": 3.0,
+          "unit": "percentCashBack",
+          "notes": "Apple and select 3% Daily Cash merchants when using Apple Pay",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
       ],
       "rewardsSummary": [
-        "3% at Apple and select partners",
-        "2% via Apple Pay",
-        "1% everywhere else"
+        "3% Daily Cash at Apple and select merchants with Apple Pay",
+        "2% Daily Cash with Apple Pay",
+        "1% with the titanium card or where Apple Pay is not used"
       ],
-      "updatedAt": "2026-07-01"
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.apple.com/apple-card/",
+      "benefits": [
+        {
+          "type": "fee",
+          "name": "No annual, foreign transaction, or late fees"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.apple.com/apple-card/",
+        "https://www.apple.com/newsroom/2026/01/chase-to-become-new-issuer-of-apple-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.apple.com/apple-card/",
+      "allowedImageDomains": [
+        "apple.com",
+        "www.apple.com"
+      ],
+      "foreignTransactionFeePercent": 0
     },
     {
       "id": "chase-freedom-flex",
@@ -32,19 +92,718 @@
       "annualFee": 0,
       "announcement": null,
       "imageFile": "chase-freedom-flex.png",
-      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
       "rewards": [
-        { "category": "dining", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
-        { "category": "drugstores", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
-        { "category": "travel", "rate": 5.0, "unit": "percentCashBack", "notes": "Booked through Chase Travel", "portalOnly": true, "rotating": false, "cap": null },
-        { "category": "grocery", "rate": 5.0, "unit": "percentCashBack", "notes": "Q3 2026 rotating category, activation required", "portalOnly": false, "rotating": true, "cap": { "amount": 1500, "period": "quarter" } }
+        {
+          "category": "rotatingQuarterly",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Activated quarterly categories",
+          "portalOnly": false,
+          "rotating": true,
+          "cap": {
+            "amount": 1500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "requiresActivation": true
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Purchased through Chase Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "drugstores",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
       ],
       "rewardsSummary": [
-        "5% rotating quarterly categories (activation required)",
-        "5% travel through Chase Travel",
-        "3% dining and drugstores"
+        "5% on activated quarterly categories, up to $1,500 combined per quarter",
+        "5% through Chase Travel",
+        "3% dining",
+        "3% drugstores",
+        "1% other purchases"
       ],
-      "updatedAt": "2026-07-01"
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "benefits": [],
+      "sourceUrls": [
+        "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "www.chase.com"
+      ]
+    },
+    {
+      "id": "chase-freedom-unlimited",
+      "name": "Freedom Unlimited",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "chase-freedom-unlimited.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Purchased through Chase Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "drugstores",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% through Chase Travel",
+        "3% dining",
+        "3% drugstores",
+        "1.5% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "benefits": [
+        {
+          "type": "membership",
+          "name": "DashPass",
+          "period": "6 months",
+          "notes": "Activation deadline and terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "www.chase.com"
+      ]
+    },
+    {
+      "id": "chase-sapphire-preferred",
+      "name": "Sapphire Preferred",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "chase-sapphire-preferred.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Through Chase Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "evCharging",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "vacationRentals",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Top brands; issuer terms apply",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "streaming",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Select streaming services",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "onlineGrocery",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Excludes Target, Walmart and wholesale clubs",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "travel",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": "Other travel",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x through Chase Travel",
+        "3x dining, gas/EV charging, select streaming and online grocery",
+        "3x eligible vacation homes at top brands",
+        "2x other travel",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Chase Travel hotel credit",
+          "value": 100,
+          "currency": "USD",
+          "period": "anniversaryYear"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Global Entry, TSA PreCheck or NEXUS credit",
+          "value": 120,
+          "currency": "USD",
+          "period": "every4Years"
+        },
+        {
+          "type": "membership",
+          "name": "DoorDash DashPass",
+          "notes": "Activation and eligibility terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred"
+      ],
+      "imageSourceUrl": "https://creditcards.chase.com/content/dam/jpmc-marketplace/card-art/sapphire-preferredcard2026.png",
+      "imageSourcePage": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com"
+      ],
+      "rewardProgram": {
+        "name": "Chase Ultimate Rewards",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "conservativeCashEquivalent"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "chase-prime-visa",
+      "name": "Prime Visa",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "chase-prime-visa.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "amazon",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "With eligible Prime membership",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "wholeFoods",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "With eligible Prime membership",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Through Chase Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "gas",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "transit",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Includes local transit and commuting, including rideshare",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% Amazon.com, Audible.com and Whole Foods with eligible Prime",
+        "5% through Chase Travel",
+        "2% gas, dining and local transit/commuting",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/cash-back-credit-cards/amazon-prime-rewards",
+      "benefits": [],
+      "sourceUrls": [
+        "https://creditcards.chase.com/cash-back-credit-cards/amazon-prime-rewards"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/cash-back-credit-cards/amazon-prime-rewards",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "amazon.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "chase-united-explorer",
+      "name": "United Explorer Card",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 150,
+      "announcement": null,
+      "imageFile": "chase-united-explorer.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 1.2
+      },
+      "rewards": [
+        {
+          "category": "united",
+          "rate": 3,
+          "unit": "milesPerDollar",
+          "notes": "Eligible United purchases outside the limited flight promotion",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.6
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.4
+        },
+        {
+          "category": "hotels",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": "Direct hotel purchases",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.4
+        }
+      ],
+      "rewardsSummary": [
+        "3x miles on eligible United purchases",
+        "2x dining and direct hotel purchases",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
+      "benefits": [
+        {
+          "type": "baggage",
+          "name": "First checked bag free",
+          "notes": "Eligibility and ticket purchase requirements apply"
+        },
+        {
+          "type": "lounge",
+          "name": "United Club one-time passes",
+          "value": 2,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Two one-time passes per year"
+        },
+        {
+          "type": "travel",
+          "name": "Priority boarding"
+        }
+      ],
+      "sourceUrls": [
+        "https://creditcards.chase.com/travel-credit-cards/united/united-explorer"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "united.com"
+      ],
+      "rewardProgram": {
+        "name": "United MileagePlus",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.2,
+        "valuationMethod": "catalogEstimate"
+      },
+      "foreignTransactionFeePercent": 0,
+      "introAnnualFee": {
+        "amount": 0,
+        "duration": "firstYear"
+      }
+    },
+    {
+      "id": "chase-marriott-bonvoy-boundless",
+      "name": "Marriott Bonvoy Boundless",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "chase-marriott-bonvoy-boundless.png",
+      "baseRate": {
+        "rate": 2,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.4
+      },
+      "rewards": [
+        {
+          "category": "marriottHotels",
+          "rate": 6,
+          "unit": "pointsPerDollar",
+          "notes": "Qualifying purchases at participating Marriott Bonvoy hotels",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 4.2
+        },
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined with gas and dining",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 2.1
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined with grocery and dining",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 2.1
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined with grocery and gas",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 2.1
+        }
+      ],
+      "rewardsSummary": [
+        "6x at participating Marriott hotels",
+        "3x grocery, gas and dining on first $6,000 combined annually",
+        "2x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless",
+      "benefits": [
+        {
+          "type": "freeNight",
+          "name": "Anniversary Free Night Award",
+          "notes": "One night up to 35,000 points; terms apply"
+        },
+        {
+          "type": "status",
+          "name": "Marriott Bonvoy Silver Elite Status"
+        },
+        {
+          "type": "eliteNights",
+          "name": "Elite Night Credits",
+          "value": 15,
+          "currency": "USD",
+          "period": "calendarYear"
+        }
+      ],
+      "sourceUrls": [
+        "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "marriott.com"
+      ],
+      "rewardProgram": {
+        "name": "Marriott Bonvoy",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.7,
+        "valuationMethod": "catalogEstimate"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "chase-ink-business-preferred",
+      "name": "Ink Business Preferred",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "chase-ink-business-preferred.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "shipping",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined cap across 3x categories",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 150000,
+            "currency": "USD",
+            "period": "anniversaryYear",
+            "combined": true
+          },
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "advertising",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Social media and search engine advertising; combined cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 150000,
+            "currency": "USD",
+            "period": "anniversaryYear",
+            "combined": true
+          },
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "internetCablePhone",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 150000,
+            "currency": "USD",
+            "period": "anniversaryYear",
+            "combined": true
+          },
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "travel",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Combined cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 150000,
+            "currency": "USD",
+            "period": "anniversaryYear",
+            "combined": true
+          },
+          "estimatedCashBackRate": 3.0
+        }
+      ],
+      "rewardsSummary": [
+        "3x first $150,000 combined each anniversary year on travel, shipping, select advertising and internet/cable/phone",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+      "benefits": [
+        {
+          "type": "employeeCards",
+          "name": "Employee cards at no additional fee"
+        },
+        {
+          "type": "membership",
+          "name": "DoorDash DashPass",
+          "notes": "Activation/eligibility terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://creditcards.chase.com/business-credit-cards/ink/business-preferred"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com"
+      ],
+      "rewardProgram": {
+        "name": "Chase Ultimate Rewards",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "conservativeCashEquivalent"
+      },
+      "foreignTransactionFeePercent": 0
     },
     {
       "id": "amex-blue-cash-preferred",
@@ -55,37 +814,3267 @@
       "annualFee": 95,
       "announcement": null,
       "imageFile": "amex-blue-cash-preferred.png",
-      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
       "rewards": [
-        { "category": "grocery", "rate": 6.0, "unit": "percentCashBack", "notes": "U.S. supermarkets", "portalOnly": false, "rotating": false, "cap": { "amount": 6000, "period": "year" } },
-        { "category": "streaming", "rate": 6.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
-        { "category": "gas", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null },
-        { "category": "transit", "rate": 3.0, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null }
+        {
+          "category": "grocery",
+          "rate": 6,
+          "unit": "percentCashBack",
+          "notes": "U.S. supermarkets",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "calendarYear"
+          }
+        },
+        {
+          "category": "streaming",
+          "rate": 6,
+          "unit": "percentCashBack",
+          "notes": "Select U.S. streaming subscriptions",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "transit",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "U.S. gas stations",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
       ],
       "rewardsSummary": [
-        "6% U.S. supermarkets (up to $6,000/yr)",
-        "6% select streaming",
-        "3% gas and transit"
+        "6% U.S. supermarkets up to $6,000/year",
+        "6% select U.S. streaming",
+        "3% transit",
+        "3% U.S. gas stations",
+        "1% other purchases"
       ],
-      "updatedAt": "2026-07-01"
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Disney Streaming Credit",
+          "value": 120,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $10 monthly; enrollment required",
+          "requiresEnrollment": true
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred/"
+      ],
+      "imageSourceUrl": "https://icm.aexp-static.com/acquisition/card-art/NUS000000264_480x304_straight_withname.png",
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com",
+        "icm.aexp-static.com"
+      ],
+      "foreignTransactionFeePercent": 2.7,
+      "introAnnualFee": {
+        "amount": 0,
+        "duration": "firstYear"
+      }
+    },
+    {
+      "id": "amex-gold",
+      "name": "American Express Gold Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 325,
+      "announcement": null,
+      "imageFile": "amex-gold.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 0.6
+      },
+      "rewards": [
+        {
+          "category": "prepaidHotels",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Prepaid hotels booked through American Express Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "dining",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": "Restaurants worldwide; 1x after cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 50000,
+            "currency": "USD",
+            "period": "calendarYear"
+          },
+          "estimatedCashBackRate": 2.4
+        },
+        {
+          "category": "grocery",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": "U.S. supermarkets; 1x after cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 25000,
+            "currency": "USD",
+            "period": "calendarYear"
+          },
+          "estimatedCashBackRate": 2.4
+        },
+        {
+          "category": "airfare",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Flights booked directly with airlines or Amex Travel",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 1.8
+        },
+        {
+          "category": "carRentalsCruises",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": "Prepaid through American Express Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 1.2
+        }
+      ],
+      "rewardsSummary": [
+        "5x prepaid hotels via Amex Travel",
+        "4x restaurants worldwide up to $50,000/year",
+        "4x U.S. supermarkets up to $25,000/year",
+        "3x flights direct or via Amex Travel",
+        "2x select prepaid travel via Amex Travel",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Dining Credit",
+          "value": 120,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $10 monthly at eligible partners; enrollment required",
+          "requiresEnrollment": true
+        },
+        {
+          "type": "statementCredit",
+          "name": "Uber Cash",
+          "value": 120,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $10 monthly in U.S. Uber Cash; terms apply"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Resy Credit",
+          "value": 100,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $50 semiannually; enrollment required",
+          "requiresEnrollment": true
+        },
+        {
+          "type": "statementCredit",
+          "name": "Dunkin Credit",
+          "value": 84,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $7 monthly; enrollment required",
+          "requiresEnrollment": true
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/gold-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ],
+      "rewardProgram": {
+        "name": "American Express Membership Rewards (US)",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.6,
+        "valuationMethod": "statementCreditBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "amex-platinum",
+      "name": "The Platinum Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 895,
+      "announcement": null,
+      "imageFile": "amex-platinum.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 0.6
+      },
+      "rewards": [
+        {
+          "category": "airfare",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Flights booked directly with airlines or through American Express Travel; up to $500,000 per calendar year",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "prepaidHotels",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Prepaid hotels and eligible prepaid vacation rentals through American Express Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x eligible flights up to $500,000/year",
+        "5x prepaid hotels and eligible vacation rentals through Amex Travel",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Hotel Credit",
+          "value": 600,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $300 semiannually on eligible prepaid Fine Hotels + Resorts or The Hotel Collection bookings; terms apply"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Resy Credit",
+          "value": 400,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Eligible U.S. Resy purchases; enrollment/terms apply"
+        },
+        {
+          "type": "lounge",
+          "name": "American Express Global Lounge Collection",
+          "notes": "Includes eligible lounge networks; enrollment may be required"
+        },
+        {
+          "type": "status",
+          "name": "Select hotel elite status",
+          "notes": "Enrollment required for eligible programs"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/platinum/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ],
+      "rewardProgram": {
+        "name": "American Express Membership Rewards (US)",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.6,
+        "valuationMethod": "statementCreditBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "amex-blue-business-plus",
+      "name": "Blue Business Plus",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "amex-blue-business-plus.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 0.6
+      },
+      "rewards": [
+        {
+          "category": "everything",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": "First $50,000 in eligible purchases each calendar year; 1x after",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 50000,
+            "currency": "USD",
+            "period": "calendarYear"
+          },
+          "estimatedCashBackRate": 1.2
+        }
+      ],
+      "rewardsSummary": [
+        "2x first $50,000 in eligible purchases each calendar year",
+        "1x after the cap"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-plus/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-plus/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-plus/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ],
+      "rewardProgram": {
+        "name": "American Express Membership Rewards (US)",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.6,
+        "valuationMethod": "statementCreditBaseline"
+      }
+    },
+    {
+      "id": "amex-blue-business-cash",
+      "name": "Blue Business Cash",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "amex-blue-business-cash.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "everything",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "First $50,000 in eligible purchases each calendar year; 1% after",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 50000,
+            "currency": "USD",
+            "period": "calendarYear"
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "2% first $50,000 in eligible purchases each calendar year",
+        "1% after the cap"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-cash/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-cash/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-cash/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ]
+    },
+    {
+      "id": "amex-delta-gold",
+      "name": "Delta SkyMiles Gold American Express Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 150,
+      "announcement": null,
+      "imageFile": "amex-delta-gold.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 1.2
+      },
+      "rewards": [
+        {
+          "category": "delta",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.4
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": "Restaurants, including takeout and delivery in the U.S.",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.4
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": "U.S. supermarkets",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.4
+        }
+      ],
+      "rewardsSummary": [
+        "2x Delta purchases",
+        "2x restaurants",
+        "2x U.S. supermarkets",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Delta Stays Credit",
+          "value": 100,
+          "currency": "USD",
+          "period": "annual"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Rideshare Credit",
+          "value": 120,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Available after first renewal; up to $10 monthly; enrollment required",
+          "requiresEnrollment": true
+        },
+        {
+          "type": "baggage",
+          "name": "First checked bag free; second bag free on eligible domestic Delta flights",
+          "notes": "Terms apply"
+        },
+        {
+          "type": "awardDiscount",
+          "name": "TakeOff 15",
+          "notes": "15% discount on eligible Delta award travel"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com",
+        "delta.com"
+      ],
+      "rewardProgram": {
+        "name": "Delta SkyMiles",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.2,
+        "valuationMethod": "catalogEstimate"
+      },
+      "foreignTransactionFeePercent": 0,
+      "introAnnualFee": {
+        "amount": 0,
+        "duration": "firstYear"
+      }
+    },
+    {
+      "id": "amex-hilton-honors",
+      "name": "Hilton Honors American Express Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "amex-hilton-honors.png",
+      "baseRate": {
+        "rate": 3,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "hiltonHotels",
+          "rate": 7,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible purchases directly with hotels and resorts in the Hilton portfolio",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.5
+        },
+        {
+          "category": "dining",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "U.S. restaurants",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.5
+        },
+        {
+          "category": "grocery",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "U.S. supermarkets",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.5
+        },
+        {
+          "category": "gas",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "U.S. gas stations",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.5
+        }
+      ],
+      "rewardsSummary": [
+        "7x Hilton portfolio hotels",
+        "5x U.S. restaurants, supermarkets and gas stations",
+        "3x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors/",
+      "benefits": [
+        {
+          "type": "status",
+          "name": "Hilton Honors Silver Status"
+        },
+        {
+          "type": "status",
+          "name": "Hilton Honors Gold Status after qualifying annual spend",
+          "spendRequirement": 20000
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/hilton-honors/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com",
+        "hilton.com"
+      ],
+      "rewardProgram": {
+        "name": "Hilton Honors",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.5,
+        "valuationMethod": "catalogEstimate"
+      },
+      "foreignTransactionFeePercent": 0
     },
     {
       "id": "capitalone-quicksilver",
-      "name": "Quicksilver",
+      "name": "Quicksilver Cash Rewards",
       "bank": "Capital One",
       "network": 3,
       "isPublished": true,
       "annualFee": 0,
       "announcement": null,
       "imageFile": "capital-one-quicksilver.png",
-      "baseRate": { "rate": 1.0, "unit": "percentCashBack" },
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
       "rewards": [
-        { "category": "everything", "rate": 1.5, "unit": "percentCashBack", "notes": null, "portalOnly": false, "rotating": false, "cap": null }
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Hotels, vacation rentals and rental cars through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "entertainment",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Eligible Capital One Entertainment purchases",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
       ],
       "rewardsSummary": [
-        "1.5% everywhere"
+        "5% eligible Capital One Travel bookings",
+        "5% eligible Capital One Entertainment purchases",
+        "1.5% other purchases"
       ],
-      "updatedAt": "2026-07-01"
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/quicksilver/"
+      ],
+      "imageSourceUrl": "https://ecm.capitalone.com/WCM/card/products/qs_cardart_prim_323x203.png",
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/quicksilver/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-savor",
+      "name": "Savor Cash Rewards",
+      "bank": "Capital One",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-savor.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Excludes superstores such as Walmart and Target",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "entertainment",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "streaming",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Popular streaming services",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Hotels, vacation rentals and rental cars through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "3% grocery, dining, entertainment and popular streaming",
+        "5% eligible Capital One Travel bookings",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.capitalone.com/credit-cards/savor/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/savor/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/savor/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-venture",
+      "name": "Venture Rewards",
+      "bank": "Capital One",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "capital-one-venture.png",
+      "baseRate": {
+        "rate": 2,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 2.0
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "milesPerDollar",
+          "notes": "Hotels, vacation rentals and rental cars through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "entertainment",
+          "rate": 5,
+          "unit": "milesPerDollar",
+          "notes": "Eligible Capital One Entertainment purchases",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x eligible Capital One Travel bookings",
+        "5x eligible Capital One Entertainment",
+        "2x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.capitalone.com/credit-cards/venture/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/venture/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/venture/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "rewardProgram": {
+        "name": "Capital One Miles",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "travelRedemptionBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-venture-x",
+      "name": "Venture X Rewards",
+      "bank": "Capital One",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 395,
+      "announcement": null,
+      "imageFile": "capital-one-venture-x.png",
+      "baseRate": {
+        "rate": 2,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 2.0
+      },
+      "rewards": [
+        {
+          "category": "hotels",
+          "rate": 10,
+          "unit": "milesPerDollar",
+          "notes": "Through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 10.0
+        },
+        {
+          "category": "carRentals",
+          "rate": 10,
+          "unit": "milesPerDollar",
+          "notes": "Through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 10.0
+        },
+        {
+          "category": "airfare",
+          "rate": 5,
+          "unit": "milesPerDollar",
+          "notes": "Through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "vacationRentals",
+          "rate": 5,
+          "unit": "milesPerDollar",
+          "notes": "Through Capital One Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "entertainment",
+          "rate": 5,
+          "unit": "milesPerDollar",
+          "notes": "Eligible Capital One Entertainment purchases",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        }
+      ],
+      "rewardsSummary": [
+        "10x hotels and rental cars via Capital One Travel",
+        "5x flights and vacation rentals via Capital One Travel",
+        "5x eligible Capital One Entertainment",
+        "2x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.capitalone.com/credit-cards/venture-x/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Capital One Travel Credit",
+          "value": 300,
+          "currency": "USD",
+          "period": "annual"
+        },
+        {
+          "type": "anniversaryBonus",
+          "name": "Anniversary miles",
+          "value": 10000,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "10,000 miles each anniversary; estimated cash-equivalent depends on redemption"
+        },
+        {
+          "type": "lounge",
+          "name": "Capital One Lounge and Priority Pass access",
+          "notes": "Terms and guest policies apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/venture-x/"
+      ],
+      "imageSourceUrl": "https://ecm.capitalone.com/WCM/card/products/venturex-cg-static-card-1000x630-2.png",
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/venture-x/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "rewardProgram": {
+        "name": "Capital One Miles",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "travelRedemptionBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-savor-student",
+      "name": "Savor Student Cash Rewards",
+      "bank": "Capital One",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-savor-student.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Excludes superstores such as Walmart and Target",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "entertainment",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "streaming",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Eligible Capital One Travel bookings",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "3% grocery, dining, entertainment and popular streaming",
+        "5% eligible Capital One Travel bookings",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "student",
+      "productUrl": "https://www.capitalone.com/credit-cards/savor-student/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/savor-student/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/savor-student/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-quicksilver-student",
+      "name": "Quicksilver Student Cash Rewards",
+      "bank": "Capital One",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-quicksilver-student.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Eligible Capital One Travel bookings",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% eligible Capital One Travel bookings",
+        "1.5% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "student",
+      "productUrl": "https://www.capitalone.com/credit-cards/quicksilver-student/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/quicksilver-student/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/quicksilver-student/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "capitalone-quicksilver-secured",
+      "name": "Quicksilver Secured Cash Rewards",
+      "bank": "Capital One",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-quicksilver-secured.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [],
+      "rewardsSummary": [
+        "1.5% cash back on every purchase"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "secured",
+      "productUrl": "https://www.capitalone.com/credit-cards/quicksilver-secured/",
+      "benefits": [
+        {
+          "type": "securedDeposit",
+          "name": "Refundable security deposit",
+          "value": 200,
+          "currency": "USD",
+          "notes": "Minimum deposit; credit line and deposit terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.capitalone.com/credit-cards/quicksilver-secured/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/credit-cards/quicksilver-secured/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ]
+    },
+    {
+      "id": "capitalone-spark-cash-select",
+      "name": "Spark 1.5% Cash Select",
+      "bank": "Capital One",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "capital-one-spark-cash-select.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "hotels",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Through Capital One Business Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "carRentals",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Through Capital One Business Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% hotels and rental cars via Capital One Business Travel",
+        "1.5% all other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://www.capitalone.com/small-business/credit-cards/spark-cash-select/",
+      "benefits": [
+        {
+          "type": "employeeCards",
+          "name": "Free employee cards"
+        },
+        {
+          "type": "businessTool",
+          "name": "Accounts Payable access"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.capitalone.com/small-business/credit-cards/spark-cash-select/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.capitalone.com/small-business/credit-cards/spark-cash-select/",
+      "allowedImageDomains": [
+        "capitalone.com",
+        "ecm.capitalone.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "citi-double-cash",
+      "name": "Citi Double Cash",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "citi-double-cash.png",
+      "baseRate": {
+        "rate": 2,
+        "unit": "percentCashBack",
+        "notes": "1% when buying plus 1% as you pay",
+        "estimatedCashBackRate": 2
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Total cash back on hotels, car rentals and attractions through Citi Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% total cash back on eligible Citi Travel hotels, car rentals and attractions",
+        "2% total cash back on other purchases: 1% when you buy and 1% as you pay"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-double-cash-credit-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "citicards.com"
+      ]
+    },
+    {
+      "id": "citi-strata",
+      "name": "Citi Strata Card",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "citi-strata.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "hotelsCarRentalsAttractions",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Through Citi Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "transit",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "evCharging",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "selfSelect",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "One self-select category; eligible options and change cadence apply",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0,
+          "selectable": true
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x hotels, car rentals and attractions through Citi Travel",
+        "3x supermarkets, select transit, gas/EV charging and one self-select category",
+        "2x restaurants",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-strata-credit-card",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-strata-credit-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-strata-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "citicards.com"
+      ],
+      "rewardProgram": {
+        "name": "Citi ThankYou Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "cashEquivalentBaseline"
+      }
+    },
+    {
+      "id": "citi-strata-premier",
+      "name": "Citi Strata Premier",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "citi-strata-premier.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "hotelsCarRentalsAttractions",
+          "rate": 10,
+          "unit": "pointsPerDollar",
+          "notes": "Through Citi Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 10.0
+        },
+        {
+          "category": "airfare",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "hotels",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Other hotel purchases",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "evCharging",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        }
+      ],
+      "rewardsSummary": [
+        "10x hotels, car rentals and attractions through Citi Travel",
+        "3x air travel, other hotels, restaurants, supermarkets, gas and EV charging",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+      "benefits": [
+        {
+          "type": "hotelBenefit",
+          "name": "Annual hotel benefit",
+          "value": 100,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "$100 off one eligible $500+ hotel stay booked through Citi Travel"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-strata-premier-credit-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "citicards.com"
+      ],
+      "rewardProgram": {
+        "name": "Citi ThankYou Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "cashEquivalentBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "citi-strata-elite",
+      "name": "Citi Strata Elite",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 595,
+      "announcement": null,
+      "imageFile": "citi-strata-elite.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "hotelsCarRentalsAttractions",
+          "rate": 12,
+          "unit": "pointsPerDollar",
+          "notes": "Through Citi Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 12.0
+        },
+        {
+          "category": "airfare",
+          "rate": 6,
+          "unit": "pointsPerDollar",
+          "notes": "Through Citi Travel",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 6.0
+        },
+        {
+          "category": "dining",
+          "rate": 6,
+          "unit": "pointsPerDollar",
+          "notes": "Citi Nights: Friday/Saturday 6pm-6am ET",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 6.0
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Dining outside Citi Nights",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        }
+      ],
+      "rewardsSummary": [
+        "12x hotels, car rentals and attractions through Citi Travel",
+        "6x air travel through Citi Travel",
+        "6x restaurants during Citi Nights; 3x other restaurant purchases",
+        "1.5x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-strata-elite-credit-card",
+      "benefits": [
+        {
+          "type": "hotelBenefit",
+          "name": "Annual Hotel Benefit",
+          "value": 300,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Eligible 2+ night stays through Citi Travel"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Splurge Credit",
+          "value": 200,
+          "currency": "USD",
+          "period": "annual"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Blacklane Credit",
+          "value": 200,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $100 semiannually"
+        },
+        {
+          "type": "lounge",
+          "name": "Priority Pass Select",
+          "notes": "Enrollment and guest terms apply"
+        },
+        {
+          "type": "loungePass",
+          "name": "Admirals Club Globe Passes",
+          "value": 4,
+          "currency": "USD",
+          "period": "annual"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-strata-elite-credit-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-strata-elite-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "citicards.com"
+      ],
+      "rewardProgram": {
+        "name": "Citi ThankYou Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "cashEquivalentBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "citi-aadvantage-platinum-select",
+      "name": "Citi / AAdvantage Platinum Select World Elite Mastercard",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 99,
+      "announcement": null,
+      "imageFile": "citi-aadvantage-platinum-select.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 1.3
+      },
+      "rewards": [
+        {
+          "category": "americanAirlines",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.6
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.6
+        },
+        {
+          "category": "gas",
+          "rate": 2,
+          "unit": "milesPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.6
+        }
+      ],
+      "rewardsSummary": [
+        "2x eligible American Airlines purchases",
+        "2x restaurants and gas stations",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
+      "benefits": [
+        {
+          "type": "baggage",
+          "name": "First checked bag free on eligible domestic American Airlines itineraries",
+          "notes": "Primary cardmember plus up to four eligible companions"
+        },
+        {
+          "type": "travel",
+          "name": "Preferred boarding on American Airlines"
+        },
+        {
+          "type": "discount",
+          "name": "25% savings on eligible inflight food and beverage purchases"
+        },
+        {
+          "type": "flightDiscount",
+          "name": "$125 American Airlines flight discount after qualifying annual spend",
+          "value": 125,
+          "currency": "USD",
+          "period": "annual",
+          "spendRequirement": 20000
+        }
+      ],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
+      "allowedImageDomains": [
+        "citi.com",
+        "citicards.com",
+        "aa.com"
+      ],
+      "rewardProgram": {
+        "name": "American Airlines AAdvantage",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.3,
+        "valuationMethod": "catalogEstimate"
+      },
+      "foreignTransactionFeePercent": 0,
+      "introAnnualFee": {
+        "amount": 0,
+        "duration": "firstYear"
+      }
+    },
+    {
+      "id": "bofa-customized-cash-rewards",
+      "name": "Customized Cash Rewards",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-customized-cash-rewards.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "choiceCategory",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Choose gas/EV, online shopping, dining, travel, drug stores/pharmacies, or home improvement/furnishings",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "selectable": true
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Combined quarterly cap with wholesale clubs and chosen 3% category",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        },
+        {
+          "category": "wholesaleClubs",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Combined quarterly cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "3% choice category",
+        "2% grocery stores and wholesale clubs",
+        "3%/2% apply to first $2,500 combined each quarter; then 1%",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "bofa-unlimited-cash-rewards",
+      "name": "Unlimited Cash Rewards",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-unlimited-cash-rewards.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [],
+      "rewardsSummary": [
+        "1.5% unlimited cash back on purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "bofa-travel-rewards",
+      "name": "Travel Rewards",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-travel-rewards.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible travel booked through Bank of America Travel Center",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        }
+      ],
+      "rewardsSummary": [
+        "3x eligible travel through Bank of America Travel Center",
+        "1.5x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ],
+      "rewardProgram": {
+        "name": "Bank of America Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "travelStatementCreditBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "bofa-premium-rewards",
+      "name": "Premium Rewards",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 95,
+      "announcement": null,
+      "imageFile": "bofa-premium-rewards.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [
+        {
+          "category": "travel",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "2x travel and dining",
+        "1.5x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Airline Incidental Statement Credit",
+          "value": 100,
+          "currency": "USD",
+          "period": "annual"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Global Entry or TSA PreCheck credit",
+          "value": 100,
+          "currency": "USD",
+          "period": "every4Years"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ],
+      "rewardProgram": {
+        "name": "Bank of America Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "travelStatementCreditBaseline"
+      },
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "bofa-customized-cash-rewards-student",
+      "name": "Customized Cash Rewards for Students",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-customized-cash-rewards-student.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "choiceCategory",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Choice category; combined cap with 2% categories",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "selectable": true
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        },
+        {
+          "category": "wholesaleClubs",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "3% choice category",
+        "2% grocery and wholesale clubs",
+        "Combined $2,500 quarterly cap",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "student",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/student-cash-back-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/student-cash-back-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/student-cash-back-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "bofa-customized-cash-rewards-secured",
+      "name": "Customized Cash Rewards Secured",
+      "bank": "Bank of America",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-customized-cash-rewards-secured.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "choiceCategory",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Choice category; combined cap with 2% categories",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "selectable": true
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        },
+        {
+          "category": "wholesaleClubs",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "3% choice category",
+        "2% grocery and wholesale clubs",
+        "Combined $2,500 quarterly cap",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "secured",
+      "productUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-secured-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/credit-cards/products/cash-back-secured-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/credit-cards/products/cash-back-secured-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "bofa-business-customized-cash",
+      "name": "Business Advantage Customized Cash Rewards",
+      "bank": "Bank of America",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-business-customized-cash.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "businessChoiceCategory",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Choice among eligible business categories; combined cap with dining",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 50000,
+            "currency": "USD",
+            "period": "calendarYear",
+            "combined": true
+          },
+          "selectable": true
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Combined annual cap with 3% choice category",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 50000,
+            "currency": "USD",
+            "period": "calendarYear",
+            "combined": true
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "3% chosen business category",
+        "2% dining",
+        "3%/2% on first $50,000 combined each calendar year; then 1%",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/cash-rewards-business-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/smallbusiness/credit-cards/products/cash-rewards-business-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/cash-rewards-business-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "bofa-business-unlimited-cash",
+      "name": "Business Advantage Unlimited Cash Rewards",
+      "bank": "Bank of America",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "bofa-business-unlimited-cash.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [],
+      "rewardsSummary": [
+        "1.5% unlimited cash back on purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "business",
+      "productUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/unlimited-cash-rewards-business-credit-card/",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.bankofamerica.com/smallbusiness/credit-cards/products/unlimited-cash-rewards-business-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/unlimited-cash-rewards-business-credit-card/",
+      "allowedImageDomains": [
+        "bankofamerica.com"
+      ]
+    },
+    {
+      "id": "discover-it-cash-back",
+      "name": "Discover it Cash Back",
+      "bank": "Discover",
+      "network": 4,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "discover-it-cash-back.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "rotatingQuarterly",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Activated quarterly categories up to quarterly maximum",
+          "portalOnly": false,
+          "rotating": true,
+          "cap": null,
+          "requiresActivation": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% activated quarterly categories up to the quarterly maximum",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "benefits": [
+        {
+          "type": "match",
+          "name": "Cashback Match",
+          "notes": "Discover matches cash back earned at the end of the first year for eligible new cardmembers"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.discover.com/credit-cards/cash-back/it-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "allowedImageDomains": [
+        "discover.com"
+      ]
+    },
+    {
+      "id": "discover-it-chrome",
+      "name": "Discover it Chrome",
+      "bank": "Discover",
+      "network": 4,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "discover-it-chrome.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "gas",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Combined with restaurants",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 1000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Combined with gas",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 1000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "2% gas and restaurants on up to $1,000 combined each quarter",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.discover.com/credit-cards/cash-back/chrome.html",
+      "benefits": [
+        {
+          "type": "match",
+          "name": "Cashback Match",
+          "notes": "First-year match for eligible new cardmembers"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.discover.com/credit-cards/cash-back/chrome.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.discover.com/credit-cards/cash-back/chrome.html",
+      "allowedImageDomains": [
+        "discover.com"
+      ]
+    },
+    {
+      "id": "discover-it-student-cash-back",
+      "name": "Discover it Student Cash Back",
+      "bank": "Discover",
+      "network": 4,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "discover-it-student-cash-back.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "rotatingQuarterly",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Activated quarterly categories up to quarterly maximum",
+          "portalOnly": false,
+          "rotating": true,
+          "cap": null,
+          "requiresActivation": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% activated quarterly categories up to quarterly maximum",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "student",
+      "productUrl": "https://www.discover.com/credit-cards/student-credit-card/it-card.html",
+      "benefits": [
+        {
+          "type": "match",
+          "name": "Cashback Match",
+          "notes": "First-year match for eligible new cardmembers"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.discover.com/credit-cards/student-credit-card/it-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.discover.com/credit-cards/student-credit-card/it-card.html",
+      "allowedImageDomains": [
+        "discover.com"
+      ]
+    },
+    {
+      "id": "discover-it-secured",
+      "name": "Discover it Secured",
+      "bank": "Discover",
+      "network": 4,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "discover-it-secured.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "rotatingQuarterly",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Activated quarterly categories up to quarterly maximum",
+          "portalOnly": false,
+          "rotating": true,
+          "cap": null,
+          "requiresActivation": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% activated quarterly categories up to quarterly maximum",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "secured",
+      "productUrl": "https://www.discover.com/credit-cards/secured-credit-card/",
+      "benefits": [
+        {
+          "type": "securedDeposit",
+          "name": "Refundable security deposit",
+          "value": 49,
+          "currency": "USD",
+          "notes": "Minimum deposit may unlock a credit line starting at $200; eligibility terms apply"
+        },
+        {
+          "type": "match",
+          "name": "Cashback Match",
+          "notes": "First-year match for eligible new cardmembers"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.discover.com/credit-cards/secured-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.discover.com/credit-cards/secured-credit-card/",
+      "allowedImageDomains": [
+        "discover.com"
+      ]
+    },
+    {
+      "id": "discover-it-miles",
+      "name": "Discover it Miles",
+      "bank": "Discover",
+      "network": 4,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "discover-it-miles.png",
+      "baseRate": {
+        "rate": 1.5,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 1.5
+      },
+      "rewards": [],
+      "rewardsSummary": [
+        "1.5x miles on every purchase"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.discover.com/credit-cards/travel/it-miles.html",
+      "benefits": [
+        {
+          "type": "match",
+          "name": "Miles Match",
+          "notes": "Discover matches miles earned at the end of the first year for eligible new cardmembers"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.discover.com/credit-cards/travel/it-miles.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.discover.com/credit-cards/travel/it-miles.html",
+      "allowedImageDomains": [
+        "discover.com"
+      ],
+      "rewardProgram": {
+        "name": "Discover Miles",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "cashEquivalentBaseline"
+      }
+    },
+    {
+      "id": "usbank-cash-plus",
+      "name": "U.S. Bank Cash+ Visa Signature",
+      "bank": "U.S. Bank",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "usbank-cash-plus.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "twoSelectedCategories",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Two selected 5% categories; combined quarterly cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "requiresActivation": true,
+          "selectable": true
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Prepaid air, hotel and car reservations through Travel Center",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "selectedEverydayCategory",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Choose gas/EV, grocery, or restaurants",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "requiresActivation": true,
+          "selectable": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% first $2,000 combined quarterly in two selected categories",
+        "5% prepaid travel through U.S. Bank Travel Center",
+        "2% one selected everyday category",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+      "allowedImageDomains": [
+        "usbank.com"
+      ]
+    },
+    {
+      "id": "usbank-altitude-go",
+      "name": "U.S. Bank Altitude Go Visa Signature",
+      "bank": "U.S. Bank",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "usbank-altitude-go.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "dining",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": "Dining, takeout and restaurant delivery; first $2,000 each quarter",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2000,
+            "currency": "USD",
+            "period": "quarter"
+          },
+          "estimatedCashBackRate": 4.0
+        },
+        {
+          "category": "streaming",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "gas",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "evCharging",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "4x dining/takeout/delivery on first $2,000 each quarter",
+        "2x streaming, grocery, gas and EV charging",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Annual streaming service credit",
+          "value": 15,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "After qualifying streaming purchases; terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html",
+      "allowedImageDomains": [
+        "usbank.com"
+      ],
+      "rewardProgram": {
+        "name": "U.S. Bank Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "catalogBaseline"
+      }
+    },
+    {
+      "id": "usbank-altitude-connect",
+      "name": "U.S. Bank Altitude Connect Visa Signature",
+      "bank": "U.S. Bank",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "usbank-altitude-connect.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "hotels",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Prepaid hotels through Travel Center",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "carRentals",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Prepaid car rentals through Travel Center",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "travel",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 4.0
+        },
+        {
+          "category": "gas",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": "Combined with EV charging",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 1000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "estimatedCashBackRate": 4.0
+        },
+        {
+          "category": "evCharging",
+          "rate": 4,
+          "unit": "pointsPerDollar",
+          "notes": "Combined with gas",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 1000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "estimatedCashBackRate": 4.0
+        },
+        {
+          "category": "dining",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "streaming",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "grocery",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x prepaid hotels and rental cars through Travel Center",
+        "4x travel",
+        "4x gas/EV on first $1,000 combined each quarter",
+        "2x dining, streaming and grocery",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+      "benefits": [
+        {
+          "type": "lounge",
+          "name": "Airport lounge access",
+          "notes": "Visit limits and enrollment terms apply"
+        },
+        {
+          "type": "statementCredit",
+          "name": "TSA PreCheck credit",
+          "notes": "Terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+      "allowedImageDomains": [
+        "usbank.com"
+      ],
+      "rewardProgram": {
+        "name": "U.S. Bank Points",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "catalogBaseline"
+      }
+    },
+    {
+      "id": "usbank-cash-plus-secured",
+      "name": "U.S. Bank Cash+ Secured Visa",
+      "bank": "U.S. Bank",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "usbank-cash-plus-secured.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "twoSelectedCategories",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2000,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "requiresActivation": true,
+          "selectable": true
+        },
+        {
+          "category": "travel",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Prepaid air, hotel and car reservations through Travel Center",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "selectedEverydayCategory",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Choose gas/EV, grocery, or restaurants",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "requiresActivation": true,
+          "selectable": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% first $2,000 combined quarterly in two selected categories",
+        "5% prepaid Travel Center bookings",
+        "2% one selected everyday category",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "secured",
+      "productUrl": "https://www.usbank.com/credit-cards/cash-plus-secured-visa-credit-card.html",
+      "benefits": [
+        {
+          "type": "securedDeposit",
+          "name": "Refundable security deposit range",
+          "value": 300,
+          "currency": "USD",
+          "notes": "$300 to $5,000"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.usbank.com/credit-cards/cash-plus-secured-visa-credit-card.html"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.usbank.com/credit-cards/cash-plus-secured-visa-credit-card.html",
+      "allowedImageDomains": [
+        "usbank.com"
+      ]
+    },
+    {
+      "id": "amex-ca-cobalt",
+      "name": "American Express Cobalt Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 191.88,
+      "announcement": null,
+      "imageFile": "amex-ca-cobalt.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.0
+      },
+      "rewards": [
+        {
+          "category": "dining",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible eats & drinks in Canada; combined monthly cap with grocery/delivery",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "CAD",
+            "period": "month",
+            "combined": true
+          },
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "grocery",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible stand-alone grocery stores in Canada; combined monthly cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "CAD",
+            "period": "month",
+            "combined": true
+          },
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "foodDelivery",
+          "rate": 5,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible food/grocery delivery in Canada; combined monthly cap",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 2500,
+            "currency": "CAD",
+            "period": "month",
+            "combined": true
+          },
+          "estimatedCashBackRate": 5.0
+        },
+        {
+          "category": "streaming",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible streaming subscriptions in Canada",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.0
+        },
+        {
+          "category": "gas",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "transit",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        },
+        {
+          "category": "rideshare",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 2.0
+        }
+      ],
+      "rewardsSummary": [
+        "5x eligible eats, drinks and grocery/delivery in Canada up to C$2,500 combined monthly",
+        "3x eligible streaming in Canada",
+        "2x gas, transit and rideshare in Canada",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "CA",
+      "currency": "CAD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/ca/en/benefits/cobalt-card/",
+      "benefits": [
+        {
+          "type": "redemption",
+          "name": "Statement credit redemption baseline",
+          "value": 10,
+          "currency": "CAD",
+          "notes": "1,000 Membership Rewards points = C$10 statement credit on eligible purchases"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/ca/en/benefits/cobalt-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/ca/en/benefits/cobalt-card/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ],
+      "rewardProgram": {
+        "name": "American Express Membership Rewards (Canada)",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.0,
+        "valuationMethod": "issuerStatementCreditBaselineCAD"
+      }
+    },
+    {
+      "id": "td-ca-aeroplan-visa-infinite",
+      "name": "TD Aeroplan Visa Infinite Card",
+      "bank": "TD Canada Trust",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 139,
+      "announcement": null,
+      "imageFile": "td-ca-aeroplan-visa-infinite.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 1.2
+      },
+      "rewards": [
+        {
+          "category": "gas",
+          "rate": 1.5,
+          "unit": "pointsPerDollar",
+          "notes": "Combined cap across gas/EV, grocery and direct Air Canada",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 80000,
+            "currency": "CAD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 1.8
+        },
+        {
+          "category": "evCharging",
+          "rate": 1.5,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 80000,
+            "currency": "CAD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 1.8
+        },
+        {
+          "category": "grocery",
+          "rate": 1.5,
+          "unit": "pointsPerDollar",
+          "notes": null,
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 80000,
+            "currency": "CAD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 1.8
+        },
+        {
+          "category": "airCanada",
+          "rate": 1.5,
+          "unit": "pointsPerDollar",
+          "notes": "Direct Air Canada including Air Canada Vacations",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 80000,
+            "currency": "CAD",
+            "period": "annual",
+            "combined": true
+          },
+          "estimatedCashBackRate": 1.8
+        }
+      ],
+      "rewardsSummary": [
+        "1.5x eligible gas/EV, grocery and direct Air Canada purchases up to C$80,000 combined annually",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "CA",
+      "currency": "CAD",
+      "cardType": "consumer",
+      "productUrl": "https://www.td.com/ca/en/personal-banking/products/credit-cards/aeroplan/aeroplan-visa-infinite-card",
+      "benefits": [
+        {
+          "type": "travel",
+          "name": "Air Canada travel perks",
+          "notes": "Includes eligible baggage and airport benefits; terms apply"
+        },
+        {
+          "type": "insurance",
+          "name": "Travel insurance package",
+          "notes": "Coverage and eligibility vary by benefit"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.td.com/ca/en/personal-banking/products/credit-cards/aeroplan/aeroplan-visa-infinite-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.td.com/ca/en/personal-banking/products/credit-cards/aeroplan/aeroplan-visa-infinite-card",
+      "allowedImageDomains": [
+        "td.com"
+      ],
+      "rewardProgram": {
+        "name": "Aeroplan",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 1.2,
+        "valuationMethod": "catalogEstimate"
+      }
+    },
+    {
+      "id": "amex-uk-gold",
+      "name": "American Express Preferred Rewards Gold Credit Card",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 195,
+      "announcement": null,
+      "imageFile": "amex-uk-gold.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "pointsPerDollar",
+        "estimatedCashBackRate": 0.5
+      },
+      "rewards": [
+        {
+          "category": "amexTravel",
+          "rate": 3,
+          "unit": "pointsPerDollar",
+          "notes": "American Express Travel Online",
+          "portalOnly": true,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 1.5
+        },
+        {
+          "category": "airlinesAndForeignCurrency",
+          "rate": 2,
+          "unit": "pointsPerDollar",
+          "notes": "Eligible direct airline purchases and foreign currency spend",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 1.0
+        }
+      ],
+      "rewardsSummary": [
+        "3x American Express Travel Online",
+        "2x eligible direct airline and foreign currency spend",
+        "1x other purchases"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "GB",
+      "currency": "GBP",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/en-gb/credit-cards/gold-credit-card/",
+      "benefits": [
+        {
+          "type": "loungePass",
+          "name": "Priority Pass lounge visits",
+          "value": 4,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Enrollment and visit terms apply"
+        },
+        {
+          "type": "statementCredit",
+          "name": "Deliveroo credit",
+          "value": 10,
+          "currency": "GBP",
+          "period": "month",
+          "notes": "Two £5 eligible credits per month; enrollment/terms apply"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/en-gb/credit-cards/gold-credit-card/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/en-gb/credit-cards/gold-credit-card/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com"
+      ],
+      "rewardProgram": {
+        "name": "American Express Membership Rewards (UK)",
+        "type": "points",
+        "estimatedUnitValueMinorCurrency": 0.5,
+        "valuationMethod": "catalogEstimateGBPpence"
+      },
+      "introAnnualFee": {
+        "amount": 0,
+        "duration": "firstYear"
+      }
+    },
+    {
+      "id": "dbs-sg-altitude-visa",
+      "name": "DBS Altitude Visa Signature",
+      "bank": "DBS",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 196.2,
+      "announcement": null,
+      "imageFile": "dbs-sg-altitude-visa.png",
+      "baseRate": {
+        "rate": 1.3,
+        "unit": "milesPerDollar",
+        "estimatedCashBackRate": 1.95
+      },
+      "rewards": [
+        {
+          "category": "overseasForeignCurrency",
+          "rate": 2.2,
+          "unit": "milesPerDollar",
+          "notes": "Eligible overseas foreign-currency spend",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null,
+          "estimatedCashBackRate": 3.3
+        }
+      ],
+      "rewardsSummary": [
+        "1.3 miles per S$1 local spend",
+        "Up to 2.2 miles per S$1 eligible overseas foreign-currency spend"
+      ],
+      "updatedAt": "2026-09-20",
+      "country": "SG",
+      "currency": "SGD",
+      "cardType": "consumer",
+      "productUrl": "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-altitude-cards",
+      "benefits": [
+        {
+          "type": "lounge",
+          "name": "Priority Pass lounge visits",
+          "notes": "Eligibility and visit limits apply"
+        },
+        {
+          "type": "anniversaryBonus",
+          "name": "10,000 bonus miles when annual fee is charged",
+          "value": 10000,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Awarded as DBS Points; reversed if fee is waived"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-altitude-cards"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.dbs.com.sg/personal/cards/credit-cards/dbs-altitude-cards",
+      "allowedImageDomains": [
+        "dbs.com.sg"
+      ],
+      "rewardProgram": {
+        "name": "DBS Points / Airline Miles",
+        "type": "miles",
+        "estimatedUnitValueMinorCurrency": 1.5,
+        "valuationMethod": "catalogEstimateSGDcents"
+      }
     }
   ]
 }
