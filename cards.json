@@ -902,7 +902,7 @@
     },
     {
       "id": "amex-gold",
-      "name": "American Express Gold Card",
+      "name": "Gold Card",
       "bank": "American Express",
       "network": 1,
       "isPublished": true,
@@ -1239,7 +1239,7 @@
     },
     {
       "id": "amex-delta-gold",
-      "name": "Delta SkyMiles Gold American Express Card",
+      "name": "Delta SkyMiles Gold Card",
       "bank": "American Express",
       "network": 1,
       "isPublished": true,
@@ -1346,7 +1346,7 @@
     },
     {
       "id": "amex-hilton-honors",
-      "name": "Hilton Honors American Express Card",
+      "name": "Hilton Honors Card",
       "bank": "American Express",
       "network": 1,
       "isPublished": true,
@@ -3680,7 +3680,7 @@
     },
     {
       "id": "amex-ca-cobalt",
-      "name": "American Express Cobalt Card",
+      "name": "Cobalt Card",
       "bank": "American Express",
       "network": 1,
       "isPublished": true,
@@ -3929,7 +3929,7 @@
     },
     {
       "id": "amex-uk-gold",
-      "name": "American Express Preferred Rewards Gold Credit Card",
+      "name": "Preferred Rewards Gold Credit Card",
       "bank": "American Express",
       "network": 1,
       "isPublished": true,
