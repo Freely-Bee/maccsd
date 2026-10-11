@@ -2041,7 +2041,7 @@
     },
     {
       "id": "citi-strata",
-      "name": "Citi Strata Card",
+      "name": "Strata Card",
       "bank": "Citi",
       "network": 2,
       "isPublished": true,
@@ -2156,7 +2156,7 @@
     },
     {
       "id": "citi-strata-premier",
-      "name": "Citi Strata Premier",
+      "name": "Strata Premier",
       "bank": "Citi",
       "network": 2,
       "isPublished": true,
@@ -2279,7 +2279,7 @@
     },
     {
       "id": "citi-strata-elite",
-      "name": "Citi Strata Elite",
+      "name": "Strata Elite",
       "bank": "Citi",
       "network": 2,
       "isPublished": true,
@@ -2400,7 +2400,7 @@
     },
     {
       "id": "citi-aadvantage-platinum-select",
-      "name": "Citi / AAdvantage Platinum Select World Elite Mastercard",
+      "name": "AAdvantage Platinum Select World Elite Mastercard",
       "bank": "Citi",
       "network": 2,
       "isPublished": true,
@@ -3002,7 +3002,7 @@
     },
     {
       "id": "discover-it-cash-back",
-      "name": "Discover it Cash Back",
+      "name": "it Cash Back",
       "bank": "Discover",
       "network": 4,
       "isPublished": true,
@@ -3053,7 +3053,7 @@
     },
     {
       "id": "discover-it-chrome",
-      "name": "Discover it Chrome",
+      "name": "it Chrome",
       "bank": "Discover",
       "network": 4,
       "isPublished": true,
@@ -3122,7 +3122,7 @@
     },
     {
       "id": "discover-it-student-cash-back",
-      "name": "Discover it Student Cash Back",
+      "name": "it Student Cash Back",
       "bank": "Discover",
       "network": 4,
       "isPublished": true,
@@ -3173,7 +3173,7 @@
     },
     {
       "id": "discover-it-secured",
-      "name": "Discover it Secured",
+      "name": "it Secured",
       "bank": "Discover",
       "network": 4,
       "isPublished": true,
@@ -3231,7 +3231,7 @@
     },
     {
       "id": "discover-it-miles",
-      "name": "Discover it Miles",
+      "name": "it Miles",
       "bank": "Discover",
       "network": 4,
       "isPublished": true,
@@ -3276,7 +3276,7 @@
     },
     {
       "id": "usbank-cash-plus",
-      "name": "U.S. Bank Cash+ Visa Signature",
+      "name": "Cash+ Visa Signature",
       "bank": "U.S. Bank",
       "network": 3,
       "isPublished": true,
@@ -3349,7 +3349,7 @@
     },
     {
       "id": "usbank-altitude-go",
-      "name": "U.S. Bank Altitude Go Visa Signature",
+      "name": "Altitude Go Visa Signature",
       "bank": "U.S. Bank",
       "network": 3,
       "isPublished": true,
@@ -3454,7 +3454,7 @@
     },
     {
       "id": "usbank-altitude-connect",
-      "name": "U.S. Bank Altitude Connect Visa Signature",
+      "name": "Altitude Connect Visa Signature",
       "bank": "U.S. Bank",
       "network": 3,
       "isPublished": true,
@@ -3599,7 +3599,7 @@
     },
     {
       "id": "usbank-cash-plus-secured",
-      "name": "U.S. Bank Cash+ Secured Visa",
+      "name": "Cash+ Secured Visa",
       "bank": "U.S. Bank",
       "network": 3,
       "isPublished": true,
@@ -3817,7 +3817,7 @@
     },
     {
       "id": "td-ca-aeroplan-visa-infinite",
-      "name": "TD Aeroplan Visa Infinite Card",
+      "name": "Aeroplan Visa Infinite Card",
       "bank": "TD Canada Trust",
       "network": 3,
       "isPublished": true,
