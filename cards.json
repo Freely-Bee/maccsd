@@ -1995,7 +1995,7 @@
     },
     {
       "id": "citi-double-cash",
-      "name": "Citi Double Cash",
+      "name": "Double Cash",
       "bank": "Citi",
       "network": 2,
       "isPublished": true,
