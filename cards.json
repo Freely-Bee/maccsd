@@ -806,6 +806,61 @@
       "foreignTransactionFeePercent": 0
     },
     {
+      "id": "chase-freedom",
+      "name": "Freedom",
+      "bank": "Chase",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": "Closed to new applicants since 2020; existing cardmembers continue to earn quarterly 5% categories.",
+      "imageFile": "chase-freedom.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "rotatingQuarterly",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Activated quarterly categories (Q4 2026: grocery stores excluding Walmart and Target, restaurants, American Red Cross)",
+          "portalOnly": false,
+          "rotating": true,
+          "cap": {
+            "amount": 1500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
+          "requiresActivation": true
+        }
+      ],
+      "rewardsSummary": [
+        "5% on activated quarterly categories, up to $1,500 combined per quarter",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.chase.com/personal/credit-cards/freedom",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.nerdwallet.com/credit-cards/reviews/chase-freedom",
+        "https://www.nerdwallet.com/credit-cards/news/chase-5-bonus-categories-q4-2026",
+        "https://www.nerdwallet.com/credit-cards/news/chase-freedom-flex-removes-foreign-transaction-fee-cell-phone-insurance"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.chase.com/personal/credit-cards/freedom",
+      "allowedImageDomains": [
+        "chase.com",
+        "creditcards.chase.com",
+        "www.chase.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
       "id": "amex-blue-cash-preferred",
       "name": "Blue Cash Preferred",
       "bank": "American Express",
@@ -2500,6 +2555,173 @@
       }
     },
     {
+      "id": "citi-custom-cash",
+      "name": "Custom Cash",
+      "bank": "Citi",
+      "network": 2,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": "Citi stopped accepting new applications for the Custom Cash Card on May 28, 2026; existing cardmembers keep their card and rewards.",
+      "imageFile": "citi-custom-cash.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "topEligibleCategory",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Automatically applies to your highest-spend eligible category each billing cycle: restaurants, gas stations, grocery stores, select travel, select transit, select streaming, drugstores, home improvement stores, fitness clubs, or live entertainment",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 500,
+            "currency": "USD",
+            "period": "billingCycle"
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "5% in your top eligible spend category each billing cycle, up to $500 spent",
+        "1% other purchases",
+        "Earned as ThankYou Points, redeemable as cash back"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-custom-cash-credit-card/additional-information",
+        "https://frequentmiler.com/customcash/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "www.citi.com"
+      ],
+      "foreignTransactionFeePercent": 3
+    },
+    {
+      "id": "citi-costco-anywhere-visa",
+      "name": "Costco Anywhere Visa",
+      "bank": "Citi",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "citi-costco-anywhere-visa.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "costcoGas",
+          "rate": 5,
+          "unit": "percentCashBack",
+          "notes": "Gas at Costco; combined $7,000/year cap with 4% gas and EV charging, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 7000,
+            "currency": "USD",
+            "period": "calendarYear",
+            "combined": true
+          }
+        },
+        {
+          "category": "gas",
+          "rate": 4,
+          "unit": "percentCashBack",
+          "notes": "Other eligible gas and EV charging; combined $7,000/year cap with Costco gas, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 7000,
+            "currency": "USD",
+            "period": "calendarYear",
+            "combined": true
+          }
+        },
+        {
+          "category": "evCharging",
+          "rate": 4,
+          "unit": "percentCashBack",
+          "notes": "Combined $7,000/year cap with gas, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 7000,
+            "currency": "USD",
+            "period": "calendarYear",
+            "combined": true
+          }
+        },
+        {
+          "category": "dining",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Restaurants",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "travel",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Eligible travel, including Costco Travel",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        },
+        {
+          "category": "wholesaleClubs",
+          "rate": 2,
+          "unit": "percentCashBack",
+          "notes": "Costco and Costco.com only",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "5% on gas at Costco and 4% on other eligible gas and EV charging, up to $7,000/year combined",
+        "3% restaurants and eligible travel, including Costco Travel",
+        "2% Costco and Costco.com",
+        "1% other purchases",
+        "Paid as an annual reward certificate after the February statement, redeemable at U.S. Costco warehouses"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.citi.com/credit-cards/citi-costco-anywhere-visa-credit-card",
+      "benefits": [
+        {
+          "type": "membership",
+          "name": "Requires an active, paid Costco membership; no annual fee with membership",
+          "notes": "Card doubles as your Costco membership ID"
+        }
+      ],
+      "sourceUrls": [
+        "https://www.citi.com/credit-cards/citi-costco-anywhere-visa-credit-card"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.citi.com/credit-cards/citi-costco-anywhere-visa-credit-card",
+      "allowedImageDomains": [
+        "citi.com",
+        "www.citi.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
       "id": "bofa-customized-cash-rewards",
       "name": "Customized Cash Rewards",
       "bank": "Bank of America",
@@ -4012,6 +4234,106 @@
       }
     },
     {
+      "id": "amex-blue-cash-everyday",
+      "name": "Blue Cash Everyday",
+      "bank": "American Express",
+      "network": 1,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "amex-blue-cash-everyday.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "grocery",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "U.S. supermarkets; $6,000/year cap, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "calendarYear"
+          }
+        },
+        {
+          "category": "gas",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "U.S. gas stations; $6,000/year cap, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "calendarYear"
+          }
+        },
+        {
+          "category": "onlineShopping",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "U.S. online retail purchases; $6,000/year cap, then 1%",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": {
+            "amount": 6000,
+            "currency": "USD",
+            "period": "calendarYear"
+          }
+        }
+      ],
+      "rewardsSummary": [
+        "3% U.S. supermarkets up to $6,000/year",
+        "3% U.S. gas stations up to $6,000/year",
+        "3% U.S. online retail up to $6,000/year",
+        "1% other purchases"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+      "benefits": [
+        {
+          "type": "statementCredit",
+          "name": "Disney Streaming Credit",
+          "value": 84,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $7 monthly on Disney+, Hulu or ESPN subscriptions; enrollment required",
+          "requiresEnrollment": true
+        },
+        {
+          "type": "statementCredit",
+          "name": "Home Chef Credit",
+          "value": 180,
+          "currency": "USD",
+          "period": "annual",
+          "notes": "Up to $15 monthly on Home Chef subscriptions; enrollment required",
+          "requiresEnrollment": true
+        }
+      ],
+      "sourceUrls": [
+        "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+        "https://global.americanexpress.com/card-benefits/detail/disney-streaming-credit/blue-cash-everyday",
+        "https://global.americanexpress.com/card-benefits/detail/home-chef-credit/blue-cash-everyday"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+      "allowedImageDomains": [
+        "americanexpress.com",
+        "aexp-static.com",
+        "icm.aexp-static.com"
+      ],
+      "foreignTransactionFeePercent": 2.7
+    },
+    {
       "id": "dbs-sg-altitude-visa",
       "name": "DBS Altitude Visa Signature",
       "bank": "DBS",
@@ -4075,6 +4397,95 @@
         "estimatedUnitValueMinorCurrency": 1.5,
         "valuationMethod": "catalogEstimateSGDcents"
       }
+    },
+    {
+      "id": "fidelity-rewards-visa-signature",
+      "name": "Fidelity Rewards Visa Signature",
+      "bank": "Fidelity",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": null,
+      "imageFile": "fidelity-rewards-visa-signature.png",
+      "baseRate": {
+        "rate": 2,
+        "unit": "percentCashBack",
+        "notes": "2 points per dollar; 2% when redeemed into an eligible Fidelity account",
+        "estimatedCashBackRate": 2
+      },
+      "rewards": [],
+      "rewardsSummary": [
+        "2% on all purchases when deposited into an eligible Fidelity account (brokerage, cash management, IRA, HSA or 529)",
+        "Other redemptions may be worth less",
+        "Issued by Elan Financial Services"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "consumer",
+      "productUrl": "https://www.fidelity.com/spend-save/visa-signature-card",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.fidelity.com/spend-save/visa-signature-card",
+        "https://yourmileagemayvary.com/2026/05/25/fidelity-rewards-visa-signature-card-review/",
+        "https://www.travelsummary.com/credit-card-reviews/fidelity-rewards-visa/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://www.fidelity.com/spend-save/visa-signature-card",
+      "allowedImageDomains": [
+        "fidelity.com",
+        "www.fidelity.com"
+      ],
+      "foreignTransactionFeePercent": 0
+    },
+    {
+      "id": "x-money-debit",
+      "name": "X Money Debit Card",
+      "bank": "X Money",
+      "network": 3,
+      "isPublished": true,
+      "annualFee": 0,
+      "announcement": "X Money rewards terms have changed several times since the July 2026 launch and may change again.",
+      "imageFile": "x-money-debit.png",
+      "baseRate": {
+        "rate": 1,
+        "unit": "percentCashBack",
+        "notes": "Eligible purchases when the 3% requirements are not met",
+        "estimatedCashBackRate": 1
+      },
+      "rewards": [
+        {
+          "category": "everything",
+          "rate": 3,
+          "unit": "percentCashBack",
+          "notes": "Requires $1,000+ in qualifying deposits in a trailing 34-day period or an eligible paid X subscription. Excludes tax payments, rent, Costco, utilities, jewelry stores and tuition (no cash back at all)",
+          "portalOnly": false,
+          "rotating": false,
+          "cap": null
+        }
+      ],
+      "rewardsSummary": [
+        "3% on eligible purchases with $1,000+ qualifying deposits in the last 34 days or an eligible paid X subscription",
+        "1% on eligible purchases otherwise",
+        "No cash back on tax payments, rent, Costco, utilities, jewelry stores or tuition"
+      ],
+      "updatedAt": "2026-11-15",
+      "country": "US",
+      "currency": "USD",
+      "cardType": "debit",
+      "productUrl": "https://money.x.com",
+      "benefits": [],
+      "sourceUrls": [
+        "https://www.uscreditcardguide.com/x-money-checking-account/",
+        "https://cardpilled.com/cards/x-money",
+        "https://www.cardrates.com/news/musk-launches-x-money-with-6-yield-and-3-debit-rewards/"
+      ],
+      "imageSourceUrl": null,
+      "imageSourcePage": "https://money.x.com",
+      "allowedImageDomains": [
+        "x.com",
+        "money.x.com"
+      ]
     }
   ]
 }
