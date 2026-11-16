@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": 3,
-  "updatedAt": "2026-10-11T00:00:00-04:00",
+  "catalogVersion": 4,
+  "updatedAt": "2026-11-15T00:00:00-05:00",
   "networkMap": {
     "1": "American Express",
     "2": "Mastercard",
@@ -60,7 +60,7 @@
         "2% Daily Cash with Apple Pay",
         "1% with the titanium card or where Apple Pay is not used"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
