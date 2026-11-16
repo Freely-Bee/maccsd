@@ -148,14 +148,15 @@
         "3% drugstores",
         "1% other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
       "productUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
       "benefits": [],
       "sourceUrls": [
-        "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex"
+        "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+        "https://www.nerdwallet.com/credit-cards/news/chase-freedom-flex-removes-foreign-transaction-fee-cell-phone-insurance"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
@@ -163,7 +164,8 @@
         "chase.com",
         "creditcards.chase.com",
         "www.chase.com"
-      ]
+      ],
+      "foreignTransactionFeePercent": 0
     },
     {
       "id": "chase-freedom-unlimited",
@@ -812,7 +814,7 @@
       "network": 3,
       "isPublished": true,
       "annualFee": 0,
-      "announcement": "Closed to new applicants since 2020; existing cardmembers continue to earn quarterly 5% categories.",
+      "announcement": "Closed to new applicants since 2020. Some cardholders report notices that their Freedom will convert to Freedom Unlimited by November 20, 2026, ending the 5% quarterly categories; Chase has not announced this publicly.",
       "imageFile": "chase-freedom.png",
       "baseRate": {
         "rate": 1,
@@ -849,7 +851,8 @@
       "sourceUrls": [
         "https://www.nerdwallet.com/credit-cards/reviews/chase-freedom",
         "https://www.nerdwallet.com/credit-cards/news/chase-5-bonus-categories-q4-2026",
-        "https://www.nerdwallet.com/credit-cards/news/chase-freedom-flex-removes-foreign-transaction-fee-cell-phone-insurance"
+        "https://www.nerdwallet.com/credit-cards/news/chase-freedom-flex-removes-foreign-transaction-fee-cell-phone-insurance",
+        "https://www.doctorofcredit.com/chase-doing-automatic-product-change-for-some-original-freedom-cardholders-to-freedom-unlimited/"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.chase.com/personal/credit-cards/freedom",
@@ -1118,7 +1121,11 @@
           "notes": "Flights booked directly with airlines or through American Express Travel; up to $500,000 per calendar year",
           "portalOnly": false,
           "rotating": false,
-          "cap": null,
+          "cap": {
+            "amount": 500000,
+            "currency": "USD",
+            "period": "calendarYear"
+          },
           "estimatedCashBackRate": 3.0
         },
         {
@@ -1501,7 +1508,7 @@
       "network": 3,
       "isPublished": true,
       "annualFee": 0,
-      "announcement": null,
+      "announcement": "Capital One moved some Quicksilver accounts to the Discover network in 2026 with an added 3% at grocery stores and gas stations; only notified cardholders are affected.",
       "imageFile": "capital-one-quicksilver.png",
       "baseRate": {
         "rate": 1.5,
@@ -1533,14 +1540,15 @@
         "5% eligible Capital One Entertainment purchases",
         "1.5% other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
       "productUrl": "https://www.capitalone.com/credit-cards/quicksilver/",
       "benefits": [],
       "sourceUrls": [
-        "https://www.capitalone.com/credit-cards/quicksilver/"
+        "https://www.capitalone.com/credit-cards/quicksilver/",
+        "https://www.doctorofcredit.com/capital-one-quicksilver-moves-to-discover-network-get-3-cashback-on-gas-grocery-1-5-everywhere/"
       ],
       "imageSourceUrl": "https://ecm.capitalone.com/WCM/card/products/qs_cardart_prim_323x203.png",
       "imageSourcePage": "https://www.capitalone.com/credit-cards/quicksilver/",
@@ -2460,7 +2468,7 @@
       "network": 2,
       "isPublished": true,
       "annualFee": 99,
-      "announcement": null,
+      "announcement": "Starting January 24, 2027: annual fee rises from $99 to $150; adds 3x on AAdvantage Hotels and AAdvantage Cars, and 2x on EV charging, select streaming, and eligible rides and rail.",
       "imageFile": "citi-aadvantage-platinum-select.png",
       "baseRate": {
         "rate": 1,
@@ -2533,7 +2541,8 @@
         }
       ],
       "sourceUrls": [
-        "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard"
+        "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
+        "https://thepointsguy.com/news/citi-aadvantage-platinum-select-business-refresh"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
@@ -3229,7 +3238,7 @@
       "network": 4,
       "isPublished": true,
       "annualFee": 0,
-      "announcement": null,
+      "announcement": "Some cardholders were moved to Capital One products on July 27, 2026, adding 5% on hotels, vacation rentals, rental cars and activities booked through Capital One Travel; other accounts are unchanged.",
       "imageFile": "discover-it-cash-back.png",
       "baseRate": {
         "rate": 1,
@@ -3241,15 +3250,20 @@
           "category": "rotatingQuarterly",
           "rate": 5,
           "unit": "percentCashBack",
-          "notes": "Activated quarterly categories up to quarterly maximum",
+          "notes": "Activated quarterly categories (Q4 2026: restaurants, entertainment, utilities); up to $1,500 combined per quarter",
           "portalOnly": false,
           "rotating": true,
-          "cap": null,
+          "cap": {
+            "amount": 1500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
           "requiresActivation": true
         }
       ],
       "rewardsSummary": [
-        "5% activated quarterly categories up to the quarterly maximum",
+        "5% on activated quarterly categories, up to $1,500 combined per quarter",
         "1% other purchases"
       ],
       "updatedAt": "2026-11-15",
@@ -3265,7 +3279,9 @@
         }
       ],
       "sourceUrls": [
-        "https://www.discover.com/credit-cards/cash-back/it-card.html"
+        "https://www.discover.com/credit-cards/cash-back/it-card.html",
+        "https://www.nerdwallet.com/credit-cards/news/discover-5-percent-bonus-categories-q3-2026",
+        "https://upgradedpoints.com/news/discover-it-cards-capital-one-transition/"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.discover.com/credit-cards/cash-back/it-card.html",
@@ -3361,15 +3377,20 @@
           "category": "rotatingQuarterly",
           "rate": 5,
           "unit": "percentCashBack",
-          "notes": "Activated quarterly categories up to quarterly maximum",
+          "notes": "Activated quarterly categories (Q4 2026: restaurants, entertainment, utilities); up to $1,500 combined per quarter",
           "portalOnly": false,
           "rotating": true,
-          "cap": null,
+          "cap": {
+            "amount": 1500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
           "requiresActivation": true
         }
       ],
       "rewardsSummary": [
-        "5% activated quarterly categories up to quarterly maximum",
+        "5% on activated quarterly categories, up to $1,500 combined per quarter",
         "1% other purchases"
       ],
       "updatedAt": "2026-11-15",
@@ -3385,7 +3406,8 @@
         }
       ],
       "sourceUrls": [
-        "https://www.discover.com/credit-cards/student-credit-card/it-card.html"
+        "https://www.discover.com/credit-cards/student-credit-card/it-card.html",
+        "https://www.nerdwallet.com/credit-cards/news/discover-5-percent-bonus-categories-q3-2026"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.discover.com/credit-cards/student-credit-card/it-card.html",
@@ -3412,15 +3434,20 @@
           "category": "rotatingQuarterly",
           "rate": 5,
           "unit": "percentCashBack",
-          "notes": "Activated quarterly categories up to quarterly maximum",
+          "notes": "Activated quarterly categories (Q4 2026: restaurants, entertainment, utilities); up to $1,500 combined per quarter",
           "portalOnly": false,
           "rotating": true,
-          "cap": null,
+          "cap": {
+            "amount": 1500,
+            "currency": "USD",
+            "period": "quarter",
+            "combined": true
+          },
           "requiresActivation": true
         }
       ],
       "rewardsSummary": [
-        "5% activated quarterly categories up to quarterly maximum",
+        "5% on activated quarterly categories, up to $1,500 combined per quarter",
         "1% other purchases"
       ],
       "updatedAt": "2026-11-15",
@@ -3443,7 +3470,8 @@
         }
       ],
       "sourceUrls": [
-        "https://www.discover.com/credit-cards/secured-credit-card/"
+        "https://www.discover.com/credit-cards/secured-credit-card/",
+        "https://www.nerdwallet.com/credit-cards/news/discover-5-percent-bonus-categories-q3-2026"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.discover.com/credit-cards/secured-credit-card/",
@@ -3458,7 +3486,7 @@
       "network": 4,
       "isPublished": true,
       "annualFee": 0,
-      "announcement": null,
+      "announcement": "Some cardholders were moved to Capital One products on July 27, 2026, adding 5% on hotels, vacation rentals, rental cars and activities booked through Capital One Travel; other accounts are unchanged.",
       "imageFile": "discover-it-miles.png",
       "baseRate": {
         "rate": 1.5,
@@ -3482,7 +3510,8 @@
         }
       ],
       "sourceUrls": [
-        "https://www.discover.com/credit-cards/travel/it-miles.html"
+        "https://www.discover.com/credit-cards/travel/it-miles.html",
+        "https://upgradedpoints.com/news/discover-it-cards-capital-one-transition/"
       ],
       "imageSourceUrl": null,
       "imageSourcePage": "https://www.discover.com/credit-cards/travel/it-miles.html",
