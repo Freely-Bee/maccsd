@@ -4364,7 +4364,7 @@
     },
     {
       "id": "dbs-sg-altitude-visa",
-      "name": "DBS Altitude Visa Signature",
+      "name": "Altitude Visa Signature",
       "bank": "DBS",
       "network": 3,
       "isPublished": true,
@@ -4429,7 +4429,7 @@
     },
     {
       "id": "fidelity-rewards-visa-signature",
-      "name": "Fidelity Rewards Visa Signature",
+      "name": "Rewards Visa Signature",
       "bank": "Fidelity",
       "network": 3,
       "isPublished": true,
@@ -4469,7 +4469,7 @@
     },
     {
       "id": "x-money-debit",
-      "name": "X Money Debit Card",
+      "name": "Debit Card",
       "bank": "X Money",
       "network": 3,
       "isPublished": true,
