@@ -982,7 +982,7 @@
         "2x select prepaid travel via Amex Travel",
         "1x other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
@@ -1082,7 +1082,7 @@
         "5x prepaid hotels and eligible vacation rentals through Amex Travel",
         "1x other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
@@ -1289,7 +1289,7 @@
         "2x U.S. supermarkets",
         "1x other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
@@ -1405,7 +1405,7 @@
         "5x U.S. restaurants, supermarkets and gas stations",
         "3x other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "US",
       "currency": "USD",
       "cardType": "consumer",
@@ -3785,7 +3785,7 @@
         "2x gas, transit and rideshare in Canada",
         "1x other purchases"
       ],
-      "updatedAt": "2026-09-20",
+      "updatedAt": "2026-11-15",
       "country": "CA",
       "currency": "CAD",
       "cardType": "consumer",
